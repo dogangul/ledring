@@ -144,7 +144,7 @@ def ChasingEffect_Custom(val):
         LED_Color_Set(9,220,0,0)
         LED_Color_Set(10,220,0,0)
         LED_Color_Set(11,220,0,0)
-     elif val>1400:
+    elif val>1400:
         LED_Color_Set(0,200,20,0)
         LED_Color_Set(1,200,20,0)
         LED_Color_Set(2,200,20,0)
