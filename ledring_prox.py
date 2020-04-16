@@ -142,7 +142,7 @@ def ChasingEffect_Custom(val):
     LED_Color_Set(8,0,0,255 if val>2500 else 0)
     LED_Color_Set(9,0,0,255 if val>4000 else 0)
     LED_Color_Set(10,0,0,255 if val>6000 else 0)
-    LED_Color_Set(11,0,0,255 if val>1000 else 0)
+    LED_Color_Set(11,0,0,255 if val>10000 else 0)
 
 # main code for operation
 try:
@@ -154,8 +154,7 @@ try:
     print("VCNL4200 initialized")
     choice = ''
     while choice != 'q':
-        #ChasingEffect_Custom(getProximity())
-        LED_Color_Set(6,0,0,255)
+        ChasingEffect_Custom(getProximity())
 finally:
     print("\nLed Ring is terminating.")
     Shutdown()
