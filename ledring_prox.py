@@ -132,19 +132,6 @@ def Reset():
 
 def ChasingEffect_Custom(val):
     if val>2000:
-        LED_Color_Set(0,220,0,0)
-        LED_Color_Set(1,220,0,0)
-        LED_Color_Set(2,220,0,0)
-        LED_Color_Set(3,220,0,0)
-        LED_Color_Set(4,220,0,0)
-        LED_Color_Set(5,220,0,0)
-        LED_Color_Set(6,220,0,0)
-        LED_Color_Set(7,220,0,0)
-        LED_Color_Set(8,220,0,0)
-        LED_Color_Set(9,220,0,0)
-        LED_Color_Set(10,220,0,0)
-        LED_Color_Set(11,220,0,0)
-    elif val>1400:
         LED_Color_Set(0,200,20,0)
         LED_Color_Set(1,200,20,0)
         LED_Color_Set(2,200,20,0)
@@ -156,8 +143,8 @@ def ChasingEffect_Custom(val):
         LED_Color_Set(8,200,20,0)
         LED_Color_Set(9,200,20,0)
         LED_Color_Set(10,200,20,0)
-        LED_Color_Set(11,0,0,0)   
-    elif val>1000:
+        LED_Color_Set(11,0,0,0)  
+    elif val>1400:
         LED_Color_Set(0,180,40,0)
         LED_Color_Set(1,180,40,0)
         LED_Color_Set(2,180,40,0)
@@ -170,7 +157,7 @@ def ChasingEffect_Custom(val):
         LED_Color_Set(9,180,40,0)
         LED_Color_Set(10,0,0,0)
         LED_Color_Set(11,0,0,0)
-    elif val>750:
+    elif val>1000:
         LED_Color_Set(0,160,60,0)
         LED_Color_Set(1,160,60,0)
         LED_Color_Set(2,160,60,0)
@@ -183,7 +170,7 @@ def ChasingEffect_Custom(val):
         LED_Color_Set(9,0,0,0)
         LED_Color_Set(10,0,0,0)
         LED_Color_Set(11,0,0,0)
-    elif val>600:
+    elif val>750:
         LED_Color_Set(0,140,80,0)
         LED_Color_Set(1,140,80,0)
         LED_Color_Set(2,140,80,0)
@@ -196,7 +183,7 @@ def ChasingEffect_Custom(val):
         LED_Color_Set(9,0,0,0)
         LED_Color_Set(10,0,0,0)
         LED_Color_Set(11,0,0,0)
-    elif val>480:
+    elif val>600:
         LED_Color_Set(0,120,100,0)
         LED_Color_Set(1,120,100,0)
         LED_Color_Set(2,120,100,0)
@@ -209,7 +196,7 @@ def ChasingEffect_Custom(val):
         LED_Color_Set(9,0,0,0)
         LED_Color_Set(10,0,0,0)
         LED_Color_Set(11,0,0,0)
-    elif val>380:
+    elif val>480:
         LED_Color_Set(0,100,120,0)
         LED_Color_Set(1,100,120,0)
         LED_Color_Set(2,100,120,0)
@@ -222,7 +209,7 @@ def ChasingEffect_Custom(val):
         LED_Color_Set(9,0,0,0)
         LED_Color_Set(10,0,0,0)
         LED_Color_Set(11,0,0,0)
-    elif val>300:
+    elif val>380:
         LED_Color_Set(0,80,140,0)
         LED_Color_Set(1,80,140,0)
         LED_Color_Set(2,80,140,0)
@@ -235,7 +222,7 @@ def ChasingEffect_Custom(val):
         LED_Color_Set(9,0,0,0)
         LED_Color_Set(10,0,0,0)
         LED_Color_Set(11,0,0,0)
-    elif val>240:
+    elif val>300:
         LED_Color_Set(0,60,160,0)
         LED_Color_Set(1,60,160,0)
         LED_Color_Set(2,60,160,0)
@@ -248,7 +235,7 @@ def ChasingEffect_Custom(val):
         LED_Color_Set(9,0,0,0)
         LED_Color_Set(10,0,0,0)
         LED_Color_Set(11,0,0,0)
-    elif val>200:
+    elif val>240:
         LED_Color_Set(0,40,180,0)
         LED_Color_Set(1,40,180,0)
         LED_Color_Set(2,40,180,0)
@@ -261,9 +248,22 @@ def ChasingEffect_Custom(val):
         LED_Color_Set(9,0,0,0)
         LED_Color_Set(10,0,0,0)
         LED_Color_Set(11,0,0,0)
-    elif val>180:
+    elif val>200:
         LED_Color_Set(0,20,200,0)
         LED_Color_Set(1,20,200,0)
+        LED_Color_Set(2,0,0,0)
+        LED_Color_Set(3,0,0,0)
+        LED_Color_Set(4,0,0,0)
+        LED_Color_Set(5,0,0,0)
+        LED_Color_Set(6,0,0,0)
+        LED_Color_Set(7,0,0,0)
+        LED_Color_Set(8,0,0,0)
+        LED_Color_Set(9,0,0,0)
+        LED_Color_Set(10,0,0,0)
+        LED_Color_Set(11,0,0,0)
+    elif val>180:
+        LED_Color_Set(0,20,220,0)
+        LED_Color_Set(1,0,0,0)
         LED_Color_Set(2,0,0,0)
         LED_Color_Set(3,0,0,0)
         LED_Color_Set(4,0,0,0)
