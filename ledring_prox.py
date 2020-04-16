@@ -132,11 +132,11 @@ def Reset():
 
 def ChasingEffect_Custom(val):
     LED_Color_Set(0,0,0,255 if val>180 else 0)
-    LED_Color_Set(1,0,0,255 if val>200 else 0)
-    LED_Color_Set(2,0,0,255 if val>240 else 0)
-    LED_Color_Set(3,0,0,255 if val>300 else 0)
-    LED_Color_Set(4,0,0,255 if val>380 else 0)
-    LED_Color_Set(5,0,0,255 if val>480 else 0)
+    LED_Color_Set(1,255,0,255 if val>200 else 0)
+    LED_Color_Set(2,0,255,255 if val>240 else 0)
+    LED_Color_Set(3,0,255,255 if val>300 else 0)
+    LED_Color_Set(4,255,0,255 if val>380 else 0)
+    LED_Color_Set(5,255,255,0 if val>480 else 0)
     LED_Color_Set(6,0,0,255 if val>600 else 0)
     LED_Color_Set(7,0,0,255 if val>750 else 0)
     LED_Color_Set(8,0,0,255 if val>1000 else 0)
