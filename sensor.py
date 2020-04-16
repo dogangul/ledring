@@ -10,8 +10,8 @@ device_address = 0x51
 def set_ALS_CONF(val):
     bus.write_word_data(device_address,0x00,val)
 
-def set_PS_CONF1_CONF2(conf1,conf2):
-    bus.write_word_data(device_address,0x03,conf1,conf2)
+def set_PS_CONF1_CONF2(val):
+    bus.write_word_data(device_address,0x03,val)
 
 def sensor_exists():
     return (bus.read_word_data(device_address,0x0E) == 0x1058)
