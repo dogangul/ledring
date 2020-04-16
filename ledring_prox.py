@@ -132,18 +132,18 @@ def Reset():
 
 def ChasingEffect_Custom(val):
     for i in range (0,11):
-        LED_Color_Set((i+0)%12,0,0,(val%255)*0.12)
-        LED_Color_Set((i+1)%12,0,0,(val%255)*0.17)
-        LED_Color_Set((i+2)%12,0,0,(val%255)*0.23)
-        LED_Color_Set((i+3)%12,0,0,(val%255)*0.35)
-        LED_Color_Set((i+4)%12,0,0,(val%255)*0.59)
-        LED_Color_Set((i+5)%12,0,0,(val%255)*0.78)
-        LED_Color_Set((i+6)%12,0,0,(val%255)*1.00)
-        LED_Color_Set((i+7)%12,0,0,(val%255)*0.78)
-        LED_Color_Set((i+8)%12,0,0,(val%255)*0.59)
-        LED_Color_Set((i+9)%12,0,0,(val%255)*0.35)
-        LED_Color_Set((i+10)%12,0,0,(val%255)*0.23)
-        LED_Color_Set((i+11)%12,0,0,(val%255)*0.17)
+        LED_Color_Set((i+0)%12,0,0,int(val%255*0.12))
+        LED_Color_Set((i+1)%12,0,0,int(val%255*0.17))
+        LED_Color_Set((i+2)%12,0,0,int(val%255*0.23))
+        LED_Color_Set((i+3)%12,0,0,int(val%255*0.35))
+        LED_Color_Set((i+4)%12,0,0,int(val%255*0.59))
+        LED_Color_Set((i+5)%12,0,0,int(val%255*0.78))
+        LED_Color_Set((i+6)%12,0,0,int(val%255*1.00))
+        LED_Color_Set((i+7)%12,0,0,int(val%255*0.78))
+        LED_Color_Set((i+8)%12,0,0,int(val%255*0.59))
+        LED_Color_Set((i+9)%12,0,0,int(val%255*0.35))
+        LED_Color_Set((i+10)%12,0,0,int(val%255*0.23))
+        LED_Color_Set((i+11)%12,0,0,int(val%255*0.17))
         time.sleep(0.1)
     return
 
