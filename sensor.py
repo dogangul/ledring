@@ -49,8 +49,7 @@ try:
    print("VCNL4200 initialized")
    choice = ''
    while choice != 'q':
-      print("Proximity: ", getProximity())
-      print("Ambient: ", getAmbient())
+      print("Proximity: ", getProximity(), "  Ambient: ", getAmbient())
 
 finally:
     print("Program is terminating")
