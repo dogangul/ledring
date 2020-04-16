@@ -44,8 +44,10 @@ try:
       print("VCNL4200 found")
    initialize()
    print("VCNL4200 initialized")
-   print("Proximity: ")
-   print(getProximity())
+   choice = ''
+   while choice != 'q':
+      #print("Proximity: ")
+      print(getProximity())
    #Serial.print("Ambient: ");
    #Serial.println(vcnl4200.getAmbient());
 
