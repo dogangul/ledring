@@ -131,21 +131,18 @@ def Reset():
     return
 
 def ChasingEffect_Custom(val):
-    for i in range (0,11):
-        LED_Color_Set((i+0)%12,0,0,int(val%255*0.12))
-        LED_Color_Set((i+1)%12,0,0,int(val%255*0.17))
-        LED_Color_Set((i+2)%12,0,0,int(val%255*0.23))
-        LED_Color_Set((i+3)%12,0,0,int(val%255*0.35))
-        LED_Color_Set((i+4)%12,0,0,int(val%255*0.59))
-        LED_Color_Set((i+5)%12,0,0,int(val%255*0.78))
-        LED_Color_Set((i+6)%12,0,0,int(val%255*1.00))
-        LED_Color_Set((i+7)%12,0,0,int(val%255*0.78))
-        LED_Color_Set((i+8)%12,0,0,int(val%255*0.59))
-        LED_Color_Set((i+9)%12,0,0,int(val%255*0.35))
-        LED_Color_Set((i+10)%12,0,0,int(val%255*0.23))
-        LED_Color_Set((i+11)%12,0,0,int(val%255*0.17))
-        time.sleep(0.1)
-    return
+    LED_Color_Set(0,0,0,255 if val>150 else 0)
+    LED_Color_Set(1,0,0,255 if val>200 else 0)
+    LED_Color_Set(2,0,0,255 if val>250 else 0)
+    LED_Color_Set(3,0,0,255 if val>350 else 0)
+    LED_Color_Set(4,0,0,255 if val>500 else 0)
+    LED_Color_Set(5,0,0,255 if val>750 else 0)
+    LED_Color_Set(6,0,0,255 if val>1000 else 0)
+    LED_Color_Set(7,0,0,255 if val>1500 else 0)
+    LED_Color_Set(8,0,0,255 if val>2500 else 0)
+    LED_Color_Set(9,0,0,255 if val>4000 else 0)
+    LED_Color_Set(10,0,0,255 if val>6000 else 0)
+    LED_Color_Set(11,0,0,255 if val>1000 else 0)
 
 # main code for operation
 try:
