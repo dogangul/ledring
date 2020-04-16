@@ -275,7 +275,7 @@ def ChasingEffect_Custom(val):
         LED_Color_Set(10,0,0,0)
         LED_Color_Set(11,0,0,0)
     else:
-        LED_Color_Set(0,0,220,0)
+        LED_Color_Set(0,0,0,0)
         LED_Color_Set(1,0,0,0)
         LED_Color_Set(2,0,0,0)
         LED_Color_Set(3,0,0,0)
