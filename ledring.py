@@ -51,7 +51,8 @@ def LED_CONFIG0(LED7_Bank_EN, LED6_Bank_EN, LED5_Bank_EN, LED4_Bank_EN, LED3_Ban
     return
 
 def Bank_Brightness_Set(BANK_BRIGHTNESS):
-    bus.write_byte_data(device_address, 0x03, BANK_BRIGHTNESS)
+    bus.write_byte_data(device_address1, 0x03, BANK_BRIGHTNESS)
+    bus.write_byte_data(device_address2, 0x03, BANK_BRIGHTNESS)
     return
 
 def Bank_Brightness_Set_U1(BANK_BRIGHTNESS):
@@ -75,7 +76,7 @@ def LED_Brightness_Set(LED_Number, LED_Brightness):
     if(LED_Number<8):
         bus.write_byte_data(device_address1, LED_Number+0x07, LED_Brightness)
     else:
-        bus.write_byte_data(device_address2, LED_Number8+0x07, LED_Brightness)
+        bus.write_byte_data(device_address2, LED_Number+0x07, LED_Brightness)
     return
 
 def LED_Color_Set(LED_Number, GS_Red, GS_Green, GS_Blue):
@@ -90,7 +91,8 @@ def LED_Color_Set(LED_Number, GS_Red, GS_Green, GS_Blue):
     return
         
 def Reset():
-    bus.write_byte_data(device_address, 0x27, 0xFF)
+    bus.write_byte_data(device_address1, 0x27, 0xFF)
+    bus.write_byte_data(device_address2, 0x27, 0xFF)
     return
 
 def ChasingEffect_Custom():

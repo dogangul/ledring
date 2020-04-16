@@ -5,8 +5,6 @@ import time
 bus = smbus.SMBus(1)
 device_address = 0x51
 
-
-
 def set_ALS_CONF(val):
    bus.write_word_data(device_address,0x00,val)
 
