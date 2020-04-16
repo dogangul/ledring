@@ -131,7 +131,7 @@ def Reset():
     return
 
 def ChasingEffect_Custom(val):
-    if val>2000
+    if val>2000:
         LED_Color_Set(0,220,0,0)
         LED_Color_Set(1,220,0,0)
         LED_Color_Set(2,220,0,0)
