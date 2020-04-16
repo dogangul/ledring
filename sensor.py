@@ -18,7 +18,7 @@ def sensor_exists():
 
 def initialize():
    set_ALS_CONF(0B01000000) #Edit the binary settings here to change default startup options
-   set_PS_CONF1_CONF2(0B00101010, 0B00001011)
+   set_PS_CONF1_CONF2(0B0000101100101010)
 	#set_PS_CONF3_MS();
 
 	#Set the PS interrupt levels
