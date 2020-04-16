@@ -36,13 +36,11 @@ def initialize():
    set_PS_THDH_REG(0B0010111011100000)
 
 try:
-    print("\nI2C is initializing.")
-    if (sensor_exists()):
-        print("VCNL4200 found")
-    initialize()
-    print(bus.read_word_data(device_address,0x06))
-    print(bus.read_word_data(device_address,0x07))
-        # print("VCNL4200 initialized")
+   print("\nI2C is initializing.")
+   if (sensor_exists()):
+      print("VCNL4200 found")
+   initialize()
+   print("VCNL4200 initialized")
 
 finally:
     print("\nSensor is terminating.")
