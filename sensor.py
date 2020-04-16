@@ -12,7 +12,7 @@ def sensor_exists():
     if read==0x1058:
         return true
 	else:
-	return false
+	    return false
 
 try:
     print("\nSensor is initializing.")
