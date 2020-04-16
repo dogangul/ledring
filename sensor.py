@@ -12,8 +12,7 @@ def sensor_exists():
 	#if ((lowByte == 0x58) && (highByte == 0x10)) {
 	#	return true;
 	#}
-	#return false;
-}
+	#return false
 
 try:
     print("\nSensor is initializing.")
