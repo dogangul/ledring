@@ -23,7 +23,10 @@ def set_PS_THDH_REG(val):
    bus.write_word_data(device_address,0x07,val)  
 
 def sensor_exists():
-    return (bus.read_word_data(device_address,0x0E) == 0x1058)
+   return (bus.read_word_data(device_address,0x0E) == 0x1058)
+
+def getProximity():
+   return (bus.read_word_data(device_address,0x08))
 
 def initialize():
    #Edit the binary settings here to change default startup options
@@ -41,7 +44,11 @@ try:
       print("VCNL4200 found")
    initialize()
    print("VCNL4200 initialized")
+   print("Proximity: ")
+   print(getProximity())
+   #Serial.print("Ambient: ");
+   #Serial.println(vcnl4200.getAmbient());
 
 finally:
-    print("\nSensor is terminating.")
+    print("Program is terminating")
 
