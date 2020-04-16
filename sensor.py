@@ -7,13 +7,8 @@ device_address = 0x51
 VCNL4200_DeviceID_REG = 0x0E
 
 def sensor_exists():
-    read = bus.read_word_data(device_address,0x0E)
-    print(read)
-    if read==0x1058:
-        return true
-	else:
-	    return false
-
+    print(bus.read_word_data(device_address,0x0E))
+    return (bus.read_word_data(device_address,0x0E) == 0x1058)
 try:
     print("\nSensor is initializing.")
     if (sensor_exists()):
