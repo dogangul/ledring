@@ -3,7 +3,6 @@ import RPi.GPIO as GPIO
 import time
 
 bus = smbus.SMBus(1)
-device_address = 0x28
 device_address1 = 0x28
 device_address2 = 0x29
 GPIO.setwarnings(False)
