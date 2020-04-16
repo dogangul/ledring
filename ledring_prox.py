@@ -154,7 +154,8 @@ try:
     print("VCNL4200 initialized")
     choice = ''
     while choice != 'q':
-        ChasingEffect_Custom(getProximity())
+        #ChasingEffect_Custom(getProximity())
+        LED_Color_Set(6,0,0,255)
 finally:
     print("\nLed Ring is terminating.")
     Shutdown()
