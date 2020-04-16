@@ -28,6 +28,9 @@ def sensor_exists():
 def getProximity():
    return (bus.read_word_data(device_address,0x08))
 
+def getAmbient():
+   return (bus.read_word_data(device_address,0x09))
+
 def initialize():
    #Edit the binary settings here to change default startup options
    set_ALS_CONF(0B01000000)
@@ -46,10 +49,8 @@ try:
    print("VCNL4200 initialized")
    choice = ''
    while choice != 'q':
-      #print("Proximity: ")
-      print(getProximity())
-   #Serial.print("Ambient: ");
-   #Serial.println(vcnl4200.getAmbient());
+      print("Proximity: ", getProximity())
+      print("Ambient: ", getAmbient())
 
 finally:
     print("Program is terminating")
