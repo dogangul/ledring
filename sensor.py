@@ -16,11 +16,11 @@ def sensor_exists():
 
 try:
     print("\nSensor is initializing.")
-	if (sensor_exists()) {
-		print("VCNL4200 found")
+    sensor_exists()
+    #if (response==1):
+        #print("VCNL4200 found")
 		#sensor_initialize()
 		#print("VCNL4200 initialized")
-	}
 
 finally:
     print("\nSensor is terminating.")
