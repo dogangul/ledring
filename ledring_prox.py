@@ -116,13 +116,13 @@ def LED_Brightness_Set(LED_Number, LED_Brightness):
 
 def LED_Color_Set(LED_Number, GS_Red, GS_Green, GS_Blue):
     if(LED_Number<6):
-        bus.write_byte_data(device_address1, LED_Number*3+0x0F, GS_Red)
-        bus.write_byte_data(device_address1, LED_Number*3+0x10, GS_Green)
-        bus.write_byte_data(device_address1, LED_Number*3+0x11, GS_Blue)     
+        bus.write_byte_data(device_address1, LED_Number*3+0x0F, int(GS_Red))
+        bus.write_byte_data(device_address1, LED_Number*3+0x10, int(GS_Green))
+        bus.write_byte_data(device_address1, LED_Number*3+0x11, int(GS_Blue))     
     else:
-        bus.write_byte_data(device_address2, (LED_Number-6)*3+0x0F, GS_Red)
-        bus.write_byte_data(device_address2, (LED_Number-6)*3+0x010, GS_Green)
-        bus.write_byte_data(device_address2, (LED_Number-6)*3+0x011, GS_Blue)
+        bus.write_byte_data(device_address2, (LED_Number-6)*3+0x0F, int(GS_Red))
+        bus.write_byte_data(device_address2, (LED_Number-6)*3+0x010, int(GS_Green))
+        bus.write_byte_data(device_address2, (LED_Number-6)*3+0x011, int(GS_Blue))
     return
         
 def Reset():
