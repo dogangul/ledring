@@ -131,7 +131,7 @@ def Reset():
     return
 
 def ChasingEffect_Custom(prox,amb):
-    if amb > 1000 :
+    if amb > 2000 :
         dim = 1
     else:
         dim = 0.05
