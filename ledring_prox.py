@@ -279,7 +279,7 @@ def ChasingEffect_Custom(prox,amb):
         LED_Color_Set(9,0,0,0)
         LED_Color_Set(10,0,0,0)
         LED_Color_Set(11,0,0,0)
-    elif prox>20:
+    elif prox>25:
         LED_Color_Set(0,20*dim,220*dim,0)
         LED_Color_Set(1,0,0,0)
         LED_Color_Set(2,0,0,0)
