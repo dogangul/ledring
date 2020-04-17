@@ -317,6 +317,7 @@ try:
     choice = ''
     while choice != 'q':
         ChasingEffect_Custom(getProximity(),getAmbient())
+        print("Proximity: ", getProximity(), "  Ambient: ", getAmbient())
 finally:
     print("\nLed Ring is terminating.")
     Shutdown()
