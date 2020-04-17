@@ -136,7 +136,7 @@ def ChasingEffect_Custom(prox,amb):
     else:
         dim = 0.05
         
-    if prox>1400 or prox==0:    
+    if prox>1400:    
         LED_Color_Set(0,240*dim,0,0)
         LED_Color_Set(1,240*dim,0,0)
         LED_Color_Set(2,240*dim,0,0)
