@@ -21,6 +21,7 @@ class LedRingServer:
         self._sensor = LedRingSensor(sensitivity=0.003)
         self._led_ring = LedRingLED()
         self._animation_run = False
+        self._animation_status = "stopped"
         
 
         # start continuous status update
@@ -65,8 +66,7 @@ class LedRingServer:
         while True:            
             try:
                 self._sensor_data["proximity"] = self._sensor.proximity()
-                self._sensor_data["als"] = self._sensor.ambient_light()    
-                return            
+                self._sensor_data["als"] = self._sensor.ambient_light()  
             except Exception as ex:
                 print(f'sensor read error: {ex}')
             
