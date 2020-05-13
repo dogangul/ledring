@@ -23,7 +23,7 @@ class LedRingLED:
         "Set Enable to High to enter INITIALIZATION"
         GPIO.output(17, 1)
         time.sleep(0.1)
-        Mode_Select_Normal()
+        self._mode_select_normal()
         time.sleep(0.1)
         self._device_config1(1,1,1,1,0,0)
         time.sleep(0.1)
@@ -35,7 +35,7 @@ class LedRingLED:
         self._bus.write_byte_data(self._device_address2, 0x00, 0x00)
         return
 
-    def Mode_Select_Normal(self):
+    def _mode_select_normal(self):
         "Set Chip_EN=1 to enter NORMAL mode"
         self._bus.write_byte_data(self._device_address1, 0x00, 0x40)
         self._bus.write_byte_data(self._device_address2, 0x00, 0x40)
