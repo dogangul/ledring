@@ -90,6 +90,16 @@ class LedRingControl:
         else:
             return True
 
+    def start_chasing_effect(self):
+        data = {"service":"LED"}
+        data["mode"] = "chasing_effect"
+        reply = self._execute_command(data)
+        if reply is None:
+            return False
+        else:
+            return True
+
+
     def read_sensor(self):
         data = {"service": "sensor"}
         reply = self._execute_command(data)
