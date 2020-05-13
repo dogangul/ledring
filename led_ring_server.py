@@ -35,9 +35,9 @@ class LedRingServer:
         self._server = self._context.socket(zmq.REP)
         self._server.bind(f'tcp://*:{self._port}')
 
-        if (self._server.sensor_exists()):
+        if (self._sensor.sensor_exists()):
             print("VCNL4200 found")
-        self._server.initialize()
+        self._sensor.initialize()
         print("VCNL4200 initialized")
 
         self._led_ring.initialize()
@@ -65,7 +65,8 @@ class LedRingServer:
         while True:            
             try:
                 self._sensor_data["proximity"] = self._sensor.proximity()
-                self._sensor_data["als"] = self._sensor.ambient_light()                
+                self._sensor_data["als"] = self._sensor.ambient_light()    
+                return            
             except Exception as ex:
                 print(f'sensor read error: {ex}')
             
