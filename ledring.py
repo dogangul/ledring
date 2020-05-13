@@ -42,7 +42,7 @@ class LedRingLED:
         return
         
     #Device Configure
-    def device_config1(self, Log_Scale_EN, Power_Save_EN, Auto_Incr_EN, PWM_Dithering_EN, Max_Current_Option, LED_Global_Off):
+    def _device_config1(self, Log_Scale_EN, Power_Save_EN, Auto_Incr_EN, PWM_Dithering_EN, Max_Current_Option, LED_Global_Off):
         config1=Log_Scale_EN*32+Power_Save_EN*16+Auto_Incr_EN*8+PWM_Dithering_EN*4+Max_Current_Option*2+LED_Global_Off
         self._bus.write_byte_data(self._device_address1, 0x01, config1)
         self._bus.write_byte_data(self._device_address2, 0x01, config1)
