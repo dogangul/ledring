@@ -33,7 +33,7 @@ class LedRingSensor:
    def ambient_light(self):
       return (self._bus.read_word_data(self._device_address,0x09))
 
-   def initialize():
+   def initialize(self):
       #Edit the binary settings here to change default startup options
       if 0.003 == self._sensitivity :
          self.set_ALS_CONF(0B11000000)
