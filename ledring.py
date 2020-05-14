@@ -77,7 +77,7 @@ class LedRingLED:
         self._bus.write_byte_data(self._device_address2, 0x06, BANK_C_COLOR) #Set Bank Blue Color Gray  
         return
 
-    def LED_Brightness_Set(self, LED_Number, LED_Brightness):
+    def LED_brightness_set(self, LED_Number, LED_Brightness):
         if(LED_Number<8):
             self._bus.write_byte_data(self._device_address1, LED_Number+0x07, LED_Brightness)
         else:
