@@ -90,6 +90,19 @@ class LedRingControl:
         else:
             return True
 
+    def set_led(self, led_number=0, brightness=0, color=[0xff,0xff,0xff]):
+        data = {"service":"LED"}
+
+        data["brightness"] = brightness
+        data["color"] = color
+        data["mode"] = "individual"
+        data["led_number"] = led_number
+        reply = self._execute_command(data)
+        if reply is None:
+            return False
+        else:
+            return True
+
     def start_chasing_effect(self):
         data = {"service":"LED"}
         data["mode"] = "chasing_effect"
@@ -115,3 +128,20 @@ class LedRingControl:
 
     def __del__(self):
         self.disconnect()
+
+
+def main():
+    # main code for operation
+    ledring = LedRingControl("10.10.21.176")
+    try:        
+        ledring.connect()
+        while True:
+            print(ledring.read_sensor())
+            time.sleep(0.5)
+        
+    finally:
+        print("\nLed Ring is terminating.")
+        ledring.close_connection()
+
+if __name__ == "__main__":
+	main()
