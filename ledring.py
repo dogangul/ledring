@@ -100,7 +100,7 @@ class LedRingLED:
         self._bus.write_byte_data(self._device_address2, 0x27, 0xFF)
         return
 
-    def set_all_leds(self, brithness = 0 color = [0xff,0xff,0xff]):
+    def set_all_leds(self, brithness = 0, color = [0xff,0xff,0xff]):
         for i in range (0,13):
             self.LED_color_set(i,color[0], color[1], color[2])
             self.LED_brightness_set(i, brightness)
