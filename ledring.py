@@ -101,7 +101,7 @@ class LedRingLED:
         return
 
     def set_all_leds(self, brightness = 0, color = [0xff,0xff,0xff]):
-        for i in range (0,11):
+        for i in range (0,12):
             self.LED_color_set(i,color[0], color[1], color[2])
             self.LED_brightness_set(i, brightness)
 
