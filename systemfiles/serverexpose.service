@@ -1,0 +1,11 @@
+[Unit]
+Description=Reverse SSH connection
+After=network.target
+[Service]
+Type=simple
+User=pi
+ExecStart=/usr/bin/ssh -vvv -g -N -T -o "ServerAliveInterval 10" -o "ExitOnForwardFailure yes" -R 8291:localhost:8081 pi-ssh@35.240.77.97 -i /home/pi/.ssh/pi_rsa
+Restart=always
+RestartSec=5s
+[Install]
+WantedBy=default.target
