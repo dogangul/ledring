@@ -101,14 +101,13 @@ class LedRingServer:
                 if "all" == data["mode"]:
                     brt = data["brightness"]
                     color = data["color"]
-                    self._led_ring.set_all_leds(brt, color)
+                    self._led_ring.set_all_leds( color)
                 elif "individual" == data["mode"]:
                     brt = data["brightness"]
                     color = data["color"]
                     led_num = data["led_number"]
                     
                     self._led_ring.LED_color_set(led_num,color[0],color[1],color[2])
-                    self._led_ring.LED_brightness_set(led_num,brt)
                 elif "chasing_effect" == data["mode"]:
                     # start continuous animation mode
                     self._animation_run_thread = threading.Thread(

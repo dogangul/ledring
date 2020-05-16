@@ -90,10 +90,10 @@ class LedRingControl:
         else:
             return True
 
-    def set_led(self, led_number=0, brightness=0, color=[0xff,0xff,0xff]):
+    def set_led(self, led_number=0, color=[0xff,0xff,0xff]):
         data = {"service":"LED"}
 
-        data["brightness"] = brightness
+        # data["brightness"] = brightness
         data["color"] = color
         data["mode"] = "individual"
         data["led_number"] = led_number
