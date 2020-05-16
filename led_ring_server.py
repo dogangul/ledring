@@ -99,11 +99,9 @@ class LedRingServer:
                     time.sleep(0.1)
 
                 if "all" == data["mode"]:
-                    brt = data["brightness"]
                     color = data["color"]
                     self._led_ring.set_all_leds( color)
                 elif "individual" == data["mode"]:
-                    brt = data["brightness"]
                     color = data["color"]
                     led_num = data["led_number"]
                     
