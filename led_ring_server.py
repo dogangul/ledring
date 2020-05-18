@@ -8,7 +8,7 @@ from ledring import LedRingLED
 
 class LedRingServer:
 
-    def __init__(self, server_port=5575):
+    def __init__(self, server_port=5575, sensitivity = 0.003):
         self._context = zmq.Context(1)
         self._server = None
         self._connection_failed = False
@@ -18,7 +18,7 @@ class LedRingServer:
             "als": 0, 
             }
 
-        self._sensor = LedRingSensor(sensitivity=0.003)
+        self._sensor = LedRingSensor(sensitivity=sensitivity)
         self._led_ring = LedRingLED()
         self._animation_run = False
         self._animation_status = "stopped"
