@@ -10,43 +10,40 @@ from ledring_control import LedRingControl
 from pvcommon.dataloggers import LoggerFactory
 import time
 
-test_input = [[1000,1008,2172,180],
-# [2000,2006,4871,412],
-# [3000,2995,6330,535],
-# [4000,3993,6850,577],
-# test_input = [[5000,5001,7402,400],
-# [6000,5990,7910,663],
-# [7000,6998,8455,707],
-# [8000,7987,8957,760],
-# [9000,8985,9268,788],
-# [10000,9964,9588,809],
-# [11000,10944,9861,832],
-# [12000,11942,10155,857],
-# [13000,12960,10426,882],
-# [14000,13939,10690,906],
-# [15000,14937,10998,931],
-# [16000,15936,11272,957],
-# [17000,16972,11570,983],
-# [18000,17971,11866,1010],
-# [19000,18969,12145,1034],
-# [20000,19929,12408,1055],
-# [21000,20966,12656,1076],
-# [22000,21964,12919,1097],
-# [23000,22963,13182,1119],
-# [24000,24000,13437,1143],
-[25000,25036,11447,916],
-# [26000,25958,13927,1188],
-# [27000,26956,14196,1210],
-# [28000,27955,14469,1233],
-# [29000,28953,14702,1256],
-# [30000,29990,14976,1279],
-# [31000,30950,15218,1301],
-# [32000,31948,15489,1321],
-# [33000,32947,15730,1342],
-# [34000,33984,15998,1364],
-# [35000,34944,16267,1385],
-# [36000,35980,16540,1407],
-[37000,36940,14511,1162]]
+test_input = [[1000,1046,112,16],
+[2000,2035,222,33],
+[3000,3004,344,50],
+[4000,3964,461,67],
+[5000,4982,570,85],
+[6000,6000,685,103],
+[7000,7008,805,121],
+[8000,7968,923,139],
+[9000,8985,1032,157],
+[10000,9926,1141,174],
+[11000,10924,1248,192],
+[12000,11884,1356,210],
+[13000,12883,1479,229],
+[14000,13862,1579,247],
+[15000,14899,1928,262],
+[16000,15974,2504,273],
+[17000,16896,3012,283],
+[18000,17856,3511,293],
+[19000,18816,4014,303],
+[20000,19891,4552,314],
+[21000,20928,5114,325],
+[22000,21888,5610,335],
+[23000,22848,6111,345],
+[24000,23808,6609,355],
+[25000,24921,7181,367]]
+# [30000,30259,9674,415],
+# [35000,34905,12071,465],
+# [40000,40089,14396,517],
+# [45000,45158,15843,543],
+# [50000,50342,16349,585],
+# [55000,55257,16854,625],
+# [60000,60288,17392,666],
+# [65000,65011,17712,706],
+# [70000,70233,18500,745]]
 # [32000,31987,15511,1312],
 
 
@@ -54,32 +51,46 @@ test_input = [[1000,1008,2172,180],
 def set_ledring_brt(ledring, brt):
 
     shutdown_leds(ledring)
-    if brt > 255*6:
-        brt = 255*6
+    if brt > 255*3:
+        brt = 255*3
 
     leds = int(brt / 256)
-    brt = int(brt % 256)
-    for i in range(0,6):
-        
-        if i < leds:
-            # print(f'{i} 255')
-            ledring.set_led(i,[255,255,255])
-            ledring.set_led(11-i,[255,255,255])
-        elif i > leds:
-            # print(f'{i} 0')
-            ledring.set_led(i,[0,0,0])
-            ledring.set_led(11-i,[0,0,0])
+    brt = int(brt % 256)    
+
+    if leds > 0:
+        r = 255
+        if leds > 1:
+            g = 255
+            b = brt
         else:
-            # print(f'{i} {brt}')
-            ledring.set_led(leds,[brt,brt,brt])
-            ledring.set_led(11-leds,[brt,brt,brt])
+            g = brt
+            b = 0
+    else:
+        r = brt
+        g = 0
+        b = 0
+
+    # print (f'{r} {g} {b}')
+
+    try:
+        for i in range(0,12):
+            # print (f'{i} - {r} {g} {b}')
+            ledring.set_led(i,[r,g,b])
+    except Exception as ex:
+        pass
+
+
+
 
 
 
 
 def shutdown_leds(ledring):
-    for i in range (0,12):
-        ledring.set_led(i,[0,0,0])
+    try:
+        for i in range (0,12):
+            ledring.set_led(i,[0,0,0])
+    except Exception as ex:
+        pass
 
 wb_als = 0
 def update_wb_als():
@@ -119,6 +130,11 @@ def update_feedback_als(ledring):
         
         time.sleep(0.1)
 
+def margin(setpoint):
+    if setpoint < 8000:
+        return setpoint-50, setpoint+50
+    else:
+        return setpoint*0.99, setpoint*1.01
 
 def main():
     """ main method """
@@ -145,22 +161,24 @@ def main():
         daemon=True)
     thread2.start()
 
-    time.sleep(2)
-    print(feedback_als)
-    print(wb_als)
-    set_ledring_brt(ledring,255*6)
-    set_ledring_brt(feedback_ledring,255*6)
-    time.sleep(2)
-    print(feedback_als)
-    print(wb_als)
-    shutdown_leds(ledring)
-    shutdown_leds(feedback_ledring)
+    # time.sleep(2)
+    # print(feedback_als)
+    # print(wb_als)
+    
+    # set_ledring_brt(ledring,255*3)
+    # print("feedback led ring")
+    # set_ledring_brt(feedback_ledring,255*3)
+    # time.sleep(5)
+    # print(feedback_als)
+    # print(wb_als)
+    # shutdown_leds(ledring)
+    # shutdown_leds(feedback_ledring)
 
     # exit()
 
   
   
-
+    test_result = []
     try:
 
       
@@ -175,6 +193,12 @@ def main():
         for test_case in test_input:
             brt = test_case[3]
             setpoint = test_case[0]
+
+            if setpoint > 40000:
+                set_ledring_brt(feedback_ledring,255*3)
+            else:
+                shutdown_leds(feedback_ledring)
+
 
             
             ledring_setpoint = test_case[2]
@@ -196,14 +220,18 @@ def main():
             # test_setpoint = setpoint
             # test_sensor = wb_als
 
+            
+            low_margin, high_margin = margin(test_setpoint)
+
+
             retries = 40
             
-            while retries>0 and not ((test_setpoint-75) < test_sensor < (test_setpoint+75)):
+            while retries>0 and not (low_margin < test_sensor < high_margin):
                 
                 retries -= 1
                 if test_sensor < test_setpoint:        
                     if (test_setpoint - test_sensor) > 100:
-                        brt += int((test_setpoint - test_sensor)/50)
+                        brt += int((test_setpoint - test_sensor)/100)
                     else:
                         brt += 1
                 else:       
@@ -214,13 +242,13 @@ def main():
                     
                     if brt < 0:
                         brt = 0
-
+                print(f'try {setpoint}|{ledring_setpoint}: {wb_als},{feedback_als}, {brt}')
                 # ledring.set_all_leds(brt,[r,g,b])
                 set_ledring_brt(ledring,brt)
-                time.sleep(1)
+                time.sleep(2)
                 ledring_als = ledring.read_sensor()["als"]
 
-                print(f'try {setpoint}|{ledring_setpoint}: {wb_als},{feedback_als}, {brt}')
+                
 
                 # feedback_ledring_als = feedback_ledring.read_sensor()["als"]
                 test_sensor = feedback_als
@@ -235,6 +263,7 @@ def main():
             
             
             print(f'[{setpoint},{wb_als},{feedback_als},{brt}],')
+            test_result.append([setpoint,wb_als,feedback_als,brt])
             shutdown_leds(ledring)
             # print(f'[{setpoint},{wb_als},{ledring_als},{brt},{r},{g},{b}]')
             time.sleep(2)
@@ -246,22 +275,23 @@ def main():
 
         
 
-        # while True:
-        #      # Read envelope with address
-        #      [address, contents] = subscriber.recv_multipart()
-
-        #      print(f'a: {address}, c: {contents}')
-        #      c = contents.decode('utf8')
-        #      print(c)
-        #      c2 = json.loads(c)
-        #      print(c2["value"])        
-
-        # # We never get here but clean up anyhow
-        # subscriber.close()
-        # context.term()
     finally:        
         shutdown_leds(ledring)
         shutdown_leds(feedback_ledring)
+
+        for result in test_result:
+            print(f'[{result[0]},{result[1]},{result[2]},{result[3]}],')
+        print()
+
+        for result in test_result:
+            print(f'{result[0]}\t{result[1]}\t{result[2]}\t{result[3]}')
+        print()
+
+        print("[",end="")
+        for result in test_result:
+            print(f'{result[1]}',end=",")
+        print("]")
+
 
 
 if __name__ == "__main__":
