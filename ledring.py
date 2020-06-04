@@ -2,6 +2,40 @@ import smbus
 import RPi.GPIO as GPIO
 import time
 
+def rotate_left(arr_input): 
+    arr = arr_input.copy()
+    temp = arr[0] 
+    for i in range(len(arr)-1): 
+        arr[i] = arr[i+1] 
+    arr[len(arr)-1] = temp 
+    return arr
+
+def array_diff(v1,v2):
+    r = v2.copy()
+    for i in range(len(r)):
+        r[i] -= v1[i] 
+    return r
+
+def array_add(v1,v2, copy = False):
+    if copy:
+        r = v2.copy()
+    else:
+        r = v1
+    for i in range(len(r)):
+        r[i] += v2[i] 
+    return r
+
+def array_div(v,value):
+    for i in range(len(v)):
+        v[i] /= value
+
+def integer_array(v):
+    for i in range(len(v)):
+        v[i] = int(v[i])
+    return v
+
+
+
 class LedRingLED:
     def __init__(self):
         super().__init__()
@@ -104,21 +138,29 @@ class LedRingLED:
         for i in range (0,12):
             self.LED_color_set(i,color[0], color[1], color[2])
 
+
     def chasing_effect_custom(self):
-        for i in range (0,11):
-            self.LED_color_set(i%12,0,0,30)
-            self.LED_color_set((i+1)%12,0,0,45)
-            self.LED_color_set((i+2)%12,0,0,60)
-            self.LED_color_set((i+3)%12,0,0,90)
-            self.LED_color_set((i+4)%12,0,0,150)
-            self.LED_color_set((i+5)%12,0,0,200)
-            self.LED_color_set((i+6)%12,0,0,255)
-            self.LED_color_set((i+7)%12,0,0,200)
-            self.LED_color_set((i+8)%12,0,0,150)
-            self.LED_color_set((i+9)%12,0,0,900)
-            self.LED_color_set((i+10)%12,0,0,60)
-            self.LED_color_set((i+11)%12,0,0,45)
-            time.sleep(0.1)
+        
+        # v = [30,45,60,90,150,200,255,200,150,90,60,45]
+        # v = [15,30,45,60,75,200,255,200,75,60,45,30]
+        # v = [15,25,35,45,55,200,255,200,55,45,35,25]
+        v = [0,5,10,15,150,200,255,200,150,15,10,5]
+        # v = [0,5,10,15,20,25,255,25,20,15,10,5]
+        steps = 5
+
+        v_led = v
+        while True:
+            v_new = rotate_left(v_led)
+            v_diff = array_diff(v_led,v_new)
+            array_div(v_diff,steps)
+
+            for i in range(steps):
+                array_add(v_led,v_diff)
+                v_final = integer_array(v_led.copy())
+                for x in range (0,12):
+                    self.LED_color_set(x,0,0,v_final[x])
+                   
+           
         return
 
 
